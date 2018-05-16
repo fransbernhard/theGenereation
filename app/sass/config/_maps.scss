@@ -1,7 +1,10 @@
 $colors: (
-  white: #FFF,
-  whiteOpacity: rgba(249,249,249, 0.95),
-  loaderSmallBg: #f1f1f1,
+  white: #fff,
+  blue: #1b4ac0,
+  lightGrey: #7a7a7a,
+  blackGrey: #232431,
+  gradientA: #10289d,
+  gradientB: #2b7af1
 );
 
 @function colors($key: 'white') {

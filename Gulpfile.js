@@ -15,14 +15,14 @@ const gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer')
 
 const paths = {
-    style: {
-        source: 'app/sass/',
-        destination: 'dist/css/'
-    },
-    script: {
-        source: 'app/js/**/*.js',
-        destination: 'dist/js/'
-    }
+  style: {
+    source: 'app/sass/',
+    destination: 'dist/css/'
+  },
+  script: {
+    source: 'app/js/**/*.js',
+    destination: 'dist/js/'
+  }
 }
 
 gulp.task('BROWSER-SYNC', function() {
@@ -37,10 +37,6 @@ gulp.task('BROWSER-SYNC', function() {
   })
 })
 
-// gulp.task('browserSync', function() {
-//     ≈
-// });
-
 gulp.task('IMAGES', function(){
   gulp.src('app/img/**/*')
     .pipe(cache(imagemin({
@@ -52,15 +48,15 @@ gulp.task('IMAGES', function(){
 })
 
 gulp.task('JS', function() {
-    gulp.src(paths.script.source)
-      .pipe(babel({
-        presets: ['env']
-      }))
-      .pipe(uglify('bundle.min.js'))
-      .pipe(gulp.dest(paths.script.destination))
-      .pipe(browserSync.reload({
-        stream: true
-      }));
+  gulp.src(paths.script.source)
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(uglify('bundle.min.js'))
+    .pipe(gulp.dest(paths.script.destination))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 try {
@@ -87,7 +83,7 @@ try {
 }
 
 gulp.task('default', ['SASS', 'JS', 'IMAGES', 'BROWSER-SYNC'], function(){
-    gulp.watch(paths.style.source + '**/*.scss', ['SASS']);
-    gulp.watch(paths.script.source, ['JS']);
-    gulp.watch('**/*.php', browserSync.reload);
+  gulp.watch(paths.style.source + '**/*.scss', ['SASS']);
+  gulp.watch(paths.script.source, ['JS']);
+  gulp.watch('**/*.html', browserSync.reload);
 });
