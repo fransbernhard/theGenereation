@@ -1,5 +1,3 @@
-// Mixins for flexbox styling
-
 @mixin flexColumn {
   display: flex;
   flex-flow: column;
@@ -23,6 +21,12 @@
   align-items: center;
 }
 
+@mixin flexColumnJCenter {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
 @mixin flexColumnCenterCenter {
   display: flex;
   flex-flow: column;
@@ -34,6 +38,18 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin flexColumnCenterStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-flow: column;
 }
 
 @mixin bg {

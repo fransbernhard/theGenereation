@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 *:focus {
@@ -7,5 +9,133 @@
 }
 
 body {
-  background: fuchsia;
+  width: $fullVw;
+  background: linear-gradient(to right, map-get($colors, gradientA), map-get($colors, gradientB));
+}
+
+.container {
+  @include flexColumnCenter;
+}
+
+.wrapper {
+  max-width: $wrapper;
+  width: $fullPercent;
+  padding: 0rem 2rem;
+
+  @include respond-to(medium) {
+    padding: 0rem;
+  }
+}
+
+// HERO SECTION
+.bg {
+  background-image: url("../img/white_hero.png");
+  @include bg;
+}
+
+.hero-section {
+  min-width: $fullPercent;
+  min-height: 60vh;
+  padding-top: 2rem;
+  @include flexColumnCenter;
+
+  @include respond-to(medium) {
+    padding-top: 4rem;
+    align-items: flex-start;
+    flex-flow: row;
+    justify-content: space-between;
+  }
+
+}
+
+.hero-content {
+  @include respond-to(medium) {
+    max-width: 500px;
+  }
+}
+
+button {
+  padding: 1rem 2rem;;
+  color: map-get($colors, white);
+  background: map-get($colors, blue);
+  opacity: 1;
+  border: none;
+  font-size: 0.75rem;
+  margin: 2rem 0rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: opacity 0.7s ease;
+}
+
+.phone-img {
+  max-width: 50vw;
+  align-self: flex-start;
+  @include respond-to(medium) {
+    max-width: 200px;
+  }
+}
+
+// SECOND SECTION
+.content-section {
+  max-width: $fullPercent;
+  min-height: 80vh;
+  @include flexColumnCenterStart;
+  color: white;
+  @include respond-to(medium) {
+    min-height: 65vh;
+  }
+}
+
+  // SUB MENU
+.content-menu {
+  display: flex;
+  margin: 1rem 0rem;
+}
+
+.content-menu li {
+  border-top: 4px solid rgba(255,255,255,0.4);
+  padding: 0.7rem 2rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+  // INFO SECTION
+.info-box {
+  display: none;
+  flex-flow: column;
+  justify-content: center;
+  @include respond-to(medium) {
+    flex-flow: row;
+    align-items: flex-start;
+  }
+}
+
+.laptop-img {
+  max-width: $fullPercent;
+  @include respond-to(medium) {
+    max-width: 400px;
+    padding-right: 2rem;
+  }
+}
+
+.java-content {
+  @include respond-to(medium) {
+    max-width: 250px;
+  }
+}
+
+  // ACTIVE CLASSES
+.active {
+  display: flex;
+  align-items: flex-start;
+}
+
+.selected {
+  border-top: 4px solid map-get($colors, white)!important;
+  transition: border-top 0.4s ease;
+  border-radius: 1.5px;
 }
