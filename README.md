@@ -1,6 +1,6 @@
-# Task fo The Generation
+## Task fo The Generation
 
-## Installation
+### Installation
 
 Clone the project to you're local repository. Install the dependencies + devDependencies:
 ```
@@ -13,7 +13,7 @@ or
 $ npm install
 ```
 
-## Start project and build production files
+### Start project and build production files
 Compile development files @ **public** into production files @ **dist** and start server:
 ```
 $ gulp
