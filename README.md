@@ -2,7 +2,7 @@
 
 ## Installation
 
-Clone the project to you're local repository. Install the dependencies + devDependencies and start backend server:
+Clone the project to you're local repository. Install the dependencies + devDependencies:
 ```
 $ cd yourLocalRepositoryRoot
 
@@ -14,7 +14,7 @@ $ npm install
 ```
 
 ## Start project and build production files
-Compile development files @ **public** into production files @ **dist**:
+Compile development files @ **public** into production files @ **dist** and start server:
 ```
 $ gulp
 
