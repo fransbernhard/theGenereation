@@ -3,42 +3,60 @@ const gulp = require('gulp'),
   plumber = require('gulp-plumber'),
   sourcemaps = require('gulp-sourcemaps'),
   browserSync = require('browser-sync'),
+  reload = browserSync.reload,
   merge = require('merge-stream'),
   cssmin = require('gulp-cssmin'),
   uglify = require('gulp-uglifyjs'),
-  reload = browserSync.reaload
   imagemin = require('gulp-imagemin'),
   cache = require('gulp-cache'),
   concat = require('gulp-concat'),
   rename = require('gulp-rename'),
   babel = require('gulp-babel'),
-  autoprefixer = require('gulp-autoprefixer')
+  autoprefixer = require('gulp-autoprefixer'),
+  nodemon = require('gulp-nodemon')
 
 const paths = {
   style: {
-    source: 'app/sass/',
-    destination: 'dist/css/'
+    source: 'public/sass/',
+    output: 'dist/css/'
   },
   script: {
-    source: 'app/js/**/*.js',
-    destination: 'dist/js/'
+    source: 'public/js/**/*.js',
+    output: 'dist/js/'
   }
 }
 
-gulp.task('BROWSER-SYNC', function() {
+gulp.task('BROWSER-SYNC', ['NODEMON'], function() {
   var files = [
     './style.css',
     './*.html'
   ]
 
   browserSync.init(files, {
-    proxy: "http://localhost/theGeneration/",
-    notify: false
+    proxy: "http://localhost:3000",
+    port: 5000,
+    notify: true
   })
 })
 
+gulp.task('NODEMON', function (cb) {
+	var started = false
+	return nodemon({
+		script: 'app.js',
+    ignore: [
+      'gulpfile.js',
+      'node_modules/'
+    ]
+	}).on('start', function () {
+		if (!started) {
+			started = true
+      cb()
+		}
+	})
+})
+
 gulp.task('IMAGES', function(){
-  gulp.src('app/img/**/*')
+  gulp.src('public/img/**/*')
     .pipe(cache(imagemin({
       optimizationLevel: 3,
       progressive: true,
@@ -53,11 +71,11 @@ gulp.task('JS', function() {
       presets: ['env']
     }))
     .pipe(uglify('bundle.min.js'))
-    .pipe(gulp.dest(paths.script.destination))
-    .pipe(browserSync.reload({
+    .pipe(gulp.dest(paths.script.output))
+    .pipe(reload({
       stream: true
-    }));
-});
+    }))
+})
 
 try {
   gulp.task('SASS', function() {
@@ -68,13 +86,13 @@ try {
       .pipe(autoprefixer())
       .pipe(sourcemaps.write())
       .pipe(cssmin().on('error', function(err) {
-        console.log(err);
+        console.log(err)
       }))
       .pipe(rename({
         suffix: '.min'
       }))
-      .pipe(gulp.dest(paths.style.destination))
-      .pipe(browserSync.reload({
+      .pipe(gulp.dest(paths.style.output))
+      .pipe(reload({
         stream: true
       }))
   })
@@ -83,7 +101,7 @@ try {
 }
 
 gulp.task('default', ['SASS', 'JS', 'IMAGES', 'BROWSER-SYNC'], function(){
-  gulp.watch(paths.style.source + '**/*.scss', ['SASS']);
-  gulp.watch(paths.script.source, ['JS']);
-  gulp.watch('**/*.html', browserSync.reload);
-});
+  gulp.watch(paths.style.source + '**/*.scss', ['SASS'])
+  gulp.watch(paths.script.source, ['JS'])
+  gulp.watch('**/*.html', reload)
+})

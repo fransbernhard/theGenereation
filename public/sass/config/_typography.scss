@@ -1,0 +1,70 @@
+* {
+  font-family: 'Roboto', serif, arial;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3 {
+  font-weight: 900;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2, h3 {
+  padding: 1rem 0rem;
+}
+
+h2 {
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.2rem;
+}
+
+nav a {
+  font-size: 0.9rem;
+  cursor: pointer;
+  @include respond-to(medium) {
+    font-size: 0.8rem;
+  }
+}
+
+.sub-p {
+  margin-top: 1rem;
+  font-size: 0.6rem;
+}
+
+.php p {
+  column-count: 1;
+  @include respond-to(medium) {
+    column-count: 2;
+  }
+}
+
+.cPlus p {
+  column-count: 1;
+  @include respond-to(medium) {
+    column-count: 3;
+  }
+}
+
+.grey {
+  color: map-get($colors, lightGrey);
+}

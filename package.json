@@ -1,8 +1,13 @@
 {
-  "name": "nina",
+  "name": "generation",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": {
+    "name": "Mimi Lundberg",
+    "email": "mimi@fransbernhard.se",
+    "url": "http://fransbernhard.se"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
@@ -14,11 +19,16 @@
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
     "gulp-imagemin": "^4.1.0",
+    "gulp-nodemon": "^2.2.1",
     "gulp-plumber": "^1.2.0",
     "gulp-rename": "^1.2.3",
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglifyjs": "^0.6.2",
+    "hbs": "^4.0.1",
     "merge-stream": "^1.0.1"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
