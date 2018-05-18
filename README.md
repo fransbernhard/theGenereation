@@ -1,7 +1,6 @@
 # Task fo The Generation
 
 ## Installation
-*Project requires Node.js v6+ to run.*
 
 Clone the project to you're local repository. Install the dependencies + devDependencies and start backend server:
 ```
